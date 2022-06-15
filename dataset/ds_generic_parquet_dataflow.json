@@ -1,0 +1,33 @@
+{
+	"name": "ds_generic_parquet_dataflow",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"containerName": {
+				"type": "string"
+			},
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "ds_parquet"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": {
+					"value": "@dataset().containerName",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
