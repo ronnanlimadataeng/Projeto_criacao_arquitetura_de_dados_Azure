@@ -1,0 +1,23 @@
+{
+	"name": "ls_file_system_parquet",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Datasets_parquet",
+			"userId": "administrador",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_key_valt",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "secret-user-local"
+			}
+		},
+		"connectVia": {
+			"referenceName": "ir-selfhosted-project-rox-case",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
