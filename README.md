@@ -65,7 +65,8 @@ Detalhes:*custa centavos provisionar, verificar que o arquivo ficara na lixeira 
 verificar o acess policy para adicionar as permissões e adicionar outras pessoas.
 
 
-5) O Banco de dados"
+5) O Banco de dados
+
 			    criando sqlserver
 					nome do servidor: sql-server-project-rox-case.database.windows.net
 					usuário: project-rox-case
@@ -77,21 +78,22 @@ verificar o acess policy para adicionar as permissões e adicionar outras pessoa
 
 
 6) Criação o sqlserver para receber os dados e tabelas e nomeando com inicio padrão azure "sql"
-Nome do serviço: SQL server
-Nome do Recurso criado: sql-server-project-rox-case
+
 Detalhes: instancia do sql server onde posso ter varios databases
 
 
 
 7) Conectando integration run time ir-selfhosted-project-rox-case
+
 Integration runtime, responsável pela conexão com a maquina local.
 
 
 
 8) Criação repositorio do GitHub para conectar com os versionamentos do Azure
-	definir a colaboration branch, principal é main.
-	faço em dev e confirma na main
-	sempre subir primeiro na branch "dev"
+
+		definir a colaboration branch, principal é main.
+		faço em dev e confirma na main
+		sempre subir primeiro na branch "dev"
 
 
 
