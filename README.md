@@ -8,7 +8,7 @@ CONTÉUDO DESTE ARQUIVO PREVE OS TÓPICOS ABAIXO:
  * Agradecimentos
 
 
-
+![Criação de arquitetura - completa](https://github.com/ronnanlimao/Azure_data_factory_arquitetura/blob/dev/Imagens/Arquitetura%20-%20azure%20data%20lake.jpg)
 
 INTRODUÇÃO
 ------------
