@@ -1,0 +1,146 @@
+{
+	"name": "copydata_tratado",
+	"properties": {
+		"activities": [
+			{
+				"name": "copy_filesystem_to_lake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_generic_delimited_text_filesystem",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "person.person_tratado.csv",
+							"separatorFile": ","
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_generic_parquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"containerName": "silver",
+							"fileName": "person.person_tratado.parquet"
+						}
+					}
+				]
+			},
+			{
+				"name": "copy_filesystem_to_lake_copy1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "copy_filesystem_to_lake",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_generic_delimited_text_filesystem",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "production.product_tratado.csv",
+							"separatorFile": ","
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_generic_parquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"containerName": "silver",
+							"fileName": "production.product_tratado.parquet"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "PIPELINES_FILESYSTEM"
+		},
+		"annotations": []
+	}
+}

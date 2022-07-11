@@ -1,0 +1,9 @@
+{
+	"name": "adf-project-rox-case",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ad0b5ebf-2ccd-4af6-b6c7-09301102b4a2",
+		"tenantId": "659ce2b8-0714-4198-8c38-dc9b60aabb57"
+	}
+}

@@ -1,0 +1,75 @@
+{
+	"name": "copydata_salesOrderDetail",
+	"properties": {
+		"activities": [
+			{
+				"name": "copy_filesystem_to_lake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_generic_delimited_text_filesystem",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "Sales.SalesOrderDetail.csv",
+							"separatorFile": ";"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_generic_parquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"containerName": "bronze",
+							"fileName": "Sales.SalesOrderDetail.parquet"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "PIPELINES_FILESYSTEM"
+		},
+		"annotations": []
+	}
+}

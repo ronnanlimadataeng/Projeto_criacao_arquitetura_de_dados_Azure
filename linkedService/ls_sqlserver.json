@@ -1,0 +1,22 @@
+{
+	"name": "ls_sqlserver",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_key_valt",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "secret-db-local"
+			}
+		},
+		"connectVia": {
+			"referenceName": "ir-selfhosted-project-rox-case",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

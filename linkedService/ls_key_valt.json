@@ -1,0 +1,10 @@
+{
+	"name": "ls_key_valt",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kv-project-rox-case.vault.azure.net/"
+		}
+	}
+}

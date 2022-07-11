@@ -1,0 +1,35 @@
+{
+	"name": "ds_generic_delimited_text_filesystem_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_file_system_parquet",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			},
+			"separatorFile": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "ds_csv"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				}
+			},
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

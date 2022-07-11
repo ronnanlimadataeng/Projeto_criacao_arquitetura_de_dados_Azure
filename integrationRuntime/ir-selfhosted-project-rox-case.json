@@ -1,0 +1,7 @@
+{
+	"name": "ir-selfhosted-project-rox-case",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Integration runtime, responsável pela conexão com a maquina local."
+	}
+}
